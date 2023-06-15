@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,6 +12,8 @@ public class Main {
             System.out.println("4. Diagonal and square");
             System.out.println("5. Star triangle");
             System.out.println("6. Spiral triangle");
+            System.out.println("7. Character Game");
+            System.out.println("0. End programme");
             System.out.println("Nhap vao lua chon: ");
             choice = sc.nextInt();
             switch (choice) {
@@ -21,12 +22,12 @@ public class Main {
                     int length = sc.nextInt();
                     squareOneLoop(length);
                 }
-                case 2 ->{
+                case 2 -> {
                     System.out.println("Nhap vao canh hinh vuong");
                     int length = sc.nextInt();
                     squareTwoLoop(length);
                 }
-                case 3 ->{
+                case 3 -> {
                     System.out.println("Nhap vao canh hinh vuong");
                     int length = sc.nextInt();
                     spiralSquare(length);
@@ -46,10 +47,11 @@ public class Main {
                     int height = sc.nextInt();
                     spiralTriangle(height);
                 }
-                default -> throw new IllegalStateException("Unexpected value: " + choice);
+                case 7 -> {
+                    Game.game();
+                }
             }
-        }
-        while (choice == 0);
+        } while (choice != 0);
     }
     public static void squareOneLoop(int length){
         for (int i = 1; i <= length * length; i++) {
@@ -88,16 +90,6 @@ public class Main {
             }
             System.out.println();
         }
-        /*
-        side = 7
-        * * * * * * *       * * * * * *
-        * *       * *       * *     * *
-        *   *   *   *       *   * *   *
-        *     *     *       *   * *   *
-        *   *   *   *       * *     * *
-        * *       * *       * * * * * *
-        * * * * * * *
-         */
     }
     public static void spiralSquare(int length){
         int[][] matrix = new int[length][length];
