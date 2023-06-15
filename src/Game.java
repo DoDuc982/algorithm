@@ -21,11 +21,8 @@ public class Game {
         m = scanner.nextInt();
 
         board = new int[n][m];
-
-        int sum = 0;
-        ArrayList<String> arrayList = new ArrayList<>();
+        ArrayList<String> arrayList = gamePlay(n,m);
         scanner.nextLine();
-        arrayList = gamePlay(n,m);
 
 
         // Gộp các chuỗi thành một chuỗi duy nhất
@@ -35,7 +32,7 @@ public class Game {
         Collections.shuffle(arrayList);
         StringBuilder sb = new StringBuilder();
         for (String s : arrayList) {
-            StringBuilder str = new StringBuilder(s);
+            StringBuilder str;
             rand = random.nextInt(2);
             str = new StringBuilder(s);
             if (rand % 2 == 0){
@@ -44,12 +41,6 @@ public class Game {
             sb.append(str);
         }
         String mergedString = sb.toString();
-        // Kiểm tra kích thước chuỗi
-        int stringLength = mergedString.length();
-        if (stringLength > n * m) {
-            System.out.println("Chuoi ky tu vuot qua so luong o vuong. Vui long chay lai chuong trinh.");
-            return; // Dừng chương trình
-        }
 
         alphabet = new char[n * m + 1];
 
