@@ -91,11 +91,8 @@ public class Game {
         if (moveNumber == n * m + 1) {
             return true; // Đã đi qua tất cả các ô
         }
-
-        int[] randomIndices = generateRandomIndices();
-
         for (int i = 0; i < 8; i++) {
-            int randomIndex = randomIndices[i];
+            int randomIndex = random.nextInt(8);
             int nextX = x + rowMoves[randomIndex];
             int nextY = y + colMoves[randomIndex];
 
@@ -110,17 +107,6 @@ public class Game {
         }
 
         return false; // Không tìm thấy lời giải
-    }
-
-    private static int[] generateRandomIndices() {
-        int[] indices = {0, 1, 2, 3, 4, 5, 6, 7};
-        for (int i = 0; i < 8; i++) {
-            int randomIndex = random.nextInt(8);
-            int temp = indices[i];
-            indices[i] = indices[randomIndex];
-            indices[randomIndex] = temp;
-        }
-        return indices;
     }
 
     private static boolean isValidMove(int x, int y) {
